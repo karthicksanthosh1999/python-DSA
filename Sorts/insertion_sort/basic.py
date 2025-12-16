@@ -1,17 +1,17 @@
-arr = [3,2,10,1,5,2,1]
-def insertionSort(arr):
-    n =len(arr)    
-    for i in range(1,n):
-        currentVal = arr[i]
-        j=i-1
-        while j>=0 and currentVal<arr[j]:
-            arr[j+1] = arr[j]
-            j-=1
-        arr[j+1] = currentVal
-    return arr
+class Solution:
+    def insertionSort(self, nums):
+        n=len(nums)
+        for i in range(1,n):
+            insert_value=i
+            current_value=nums[i]
+            for j in range(i-1,-1,-1):
+                if nums[j] > current_value:
+                    nums[j+1] = nums[j]
+                    insert_value=j
+                else:
+                    break
+            nums[insert_value] = current_value
 
-if __name__ == "__main__":
-    result = insertionSort(arr)
-    print(result)
-            
-            
+insertionObj = Solution()
+nums = [3,2,10,1,5,2,1]
+print(insertionObj.insertionSort(nums))
