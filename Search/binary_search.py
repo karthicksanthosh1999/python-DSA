@@ -1,21 +1,21 @@
-myList = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
+class Solution:
+    def binarySearch(self,nums,target):
+        n=len(nums)
+        left=0
+        right=n-1
+        while left < right:
+            middle = (right+left) //2
+            if nums[middle] == target:
+                return middle
+            elif nums[middle] < target:
+                left = middle+1
+            else:
+                right = middle-1
+        return None
+
+
+nums = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
 targetValue = 5
 
-def binarySearch(arr, target):
-    n=len(arr)
-    left =0
-    right = n-1
-    while left < right:
-        middle = (left + right) //2
-        if arr[middle] == target:
-            return middle
-        elif arr[middle] < target:
-            left = middle + 1
-        else: 
-            right = middle - 1
-    return middle
-
-
-if __name__ == "__main__":
-    result = binarySearch(myList, targetValue)
-    print(result)
+obj = Solution()
+print(obj.binarySearch(nums,targetValue))
