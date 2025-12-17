@@ -1,4 +1,4 @@
-mylist = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
+myList = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
 targetValue = 5
 
 def binarySearch(arr, target):
@@ -17,5 +17,5 @@ def binarySearch(arr, target):
 
 
 if __name__ == "__main__":
-    result = binarySearch(mylist, targetValue)
+    result = binarySearch(myList, targetValue)
     print(result)

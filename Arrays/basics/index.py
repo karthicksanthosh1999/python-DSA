@@ -128,14 +128,3 @@ def rotate_array_clockwise(arr,d):
 #     for i in range(len(arr)):
 #         print(arr[i], end=" ")
 
-
-# Q. Find the missing Number in the array
-def missingNumber(arr):
-    n = len(arr)
-    num = 0
-    for i in range(1,n+1):
-        found = False
-        for j in range(n-1):
-            if arr[j]
-
-missingNumber([8, 2, 4, 5, 3, 7, 1])

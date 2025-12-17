@@ -1,45 +1,61 @@
-# CREATE THE NODE
 class Node:
-    def __init__(self,dataVal=None):
-        self.dataVal = dataVal
-        self.nextVal = None
+    def __init__(self,value=None):
+        self.value = value
+        self.next = None
 
-#CREATE THE LINKEDLIST
 class LinkedList:
-    def __init__(self):
-        self.headVal = None
+    def __init__(self,head=None):
+        self.head = head
+    def display(self):
+        current_node = self.head
+        while current_node:
+            print(current_node.value, end=" -> ")
+            current_node = current_node.next
+        print("Null")
 
-    def insert_at_beginning(self,new_data):
-        new_node = Node(new_data)
-        new_node.nextVal = self.headVal
-        self.headVal = new_node
+    def addBeginningNode(self,newData):
+        newNode = Node(newData);
+        newNode.next = self.head
+        self.head = newNode
 
-    def insert_at_end(self,new_data):
-        new_node = Node(new_data)
-        if self.headVal is Node:
-            self.headVal = new_node
-            return
-        last = self.headVal
-        while last.nextVal:
-            last = last.nextVal
-        last.nextVal = new_node
+    def find_value(self,search_value):
+        count=0
+        current = self.head
+        while current:
+            if current.value == search_value:
+                print(f'The value is {count}')
+                count += 1
+            current = current.next
+        if count == 0:
+            print("The value is not in list")
 
-# CREATE THE OBJECT
-list1 = LinkedList()
+    def middle_node(self):
+        slow=self.head
+        fast=self.head
+        while fast and fast.value:
+            slow=slow.next
+            fast=fast.next.next
+        return slow.value
 
-# CREATE THE NODES
-list1.headVal = Node("Monday")
-node2 = Node("Tursday")
-node3 = Node("Wednesday")
+    def reverse(self):
+        previous = None
+        current = self.head
+        while current:
+            next = current.next
+            current.next = previous
+            previous = current
+            current = next
+        self.head = previous
 
-# ASSIGN THE NODE VALUES
-list1.headVal.nextVal = node2
-node2.nextVal = node3
-list1.insert_at_beginning("Sunday")
-list1.insert_at_end("Saturday")
+li = LinkedList()
+li.addBeginningNode(10)
+li.addBeginningNode(20)
+li.addBeginningNode(30)
+li.addBeginningNode(40)
+li.addBeginningNode(50)
+li.addBeginningNode(60)
 
-# PRINT THE ALL LINKEDLIST
-current = list1.headVal
-while current:
-    print(current.dataVal)
-    current = current.nextVal
+print(li.middle_node())
+li.find_value(20)
+li.reverse()
+li.display()
