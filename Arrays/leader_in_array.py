@@ -11,7 +11,19 @@ class Solution:
                 result.append(nums[i])
         return result
 
+    def expect(self, nums):
+        n = len(nums)
+        maxEle = nums[-1]
+        result = []
+        result.append(maxEle)
+        for i in range(n-2, -1, -1):
+            if nums[i] >= maxEle:
+                maxEle = nums[i]
+                result.append(nums[i])
+        result.reverse()
+        return result
+
 
 result = Solution()
 nums =  [16, 17, 4, 3, 5, 2]
-print(result.native(nums))
+print(result.expect(nums))
