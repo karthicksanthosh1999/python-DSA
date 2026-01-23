@@ -1,18 +1,24 @@
-class Solution:
-    def pivot_value(self,nums, low, high):
-        pivot = nums[high]
-        i = low -1
-        for j in range(low, high):
-            print(low, high, i)
-            if nums[j] <= pivot:
-                i+=1
-                nums[i], nums[j] = nums[j], nums[i]
-        nums[i+1], nums[high] = nums[high], nums[i+1]
-        print(nums)
-        return i+1
+def partition(array, low, high):
+  pivot = array[high]
+  i = low - 1
 
-obj = Solution()
-nums = [11,9,12,7,3]
-low=0
-high=4
-print(obj.pivot_value(nums, low, high))
+  for j in range(low, high):
+     if array[j] <= pivot:
+       i += 1
+       array[i], array[j] = array[j], array[i]
+
+  array[i+1], array[high] = array[high], array[i+1]
+  return i+1
+
+def quicksort(array, low=0, high=None):
+  if high is None:
+    high = len(array) - 1
+
+  if low < high:
+    pivot_index = partition(array, low, high)
+    quicksort(array, low, pivot_index-1)
+    quicksort(array, pivot_index+1, high)
+
+mylist = [64, 34, 25, 5, 22, 11, 90, 12]
+quicksort(mylist)
+print(mylist)
